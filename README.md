@@ -1,5 +1,5 @@
-# Technical-task-safedeal-backend-trainee
-avito-tech / safedeal-backend-trainee
+# Technical task safedeal-backend-trainee
+<a href="https://github.com/avito-tech/safedeal-backend-trainee">avito-tech / safedeal-backend-trainee</a>
 
 
 <p>Необходимо разработать прототип API сервиса курьерской доставки на PHP</p>
