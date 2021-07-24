@@ -25,7 +25,7 @@ class ClientController extends BaseController
 
         $jsonClient = file_get_contents('/var/www/tz/log/input-json.log');
         $calculateTheCost = json_decode($jsonClient);
-        $param = $this->validate($calculateTheCost,);
+        $param = $this->validate($calculateTheCost);
 
         if(!empty($param) && $param !== false) {
 
@@ -41,13 +41,10 @@ class ClientController extends BaseController
             curl_exec($curl);
             curl_close($curl);
 
-            return true;
-            
         } else {
 
             return false;
         }
-
 
     }
 
@@ -66,8 +63,7 @@ class ClientController extends BaseController
 
         $jsonClient = file_get_contents('/var/www/tz/log/input-json.log');
         $bayerInfo = json_decode($jsonClient);
-
-        $param = $this->validate($bayerInfo, true);
+        $param = $this->validate($bayerInfo);
 
         if (!empty($param) && $param !== false) {
 
@@ -83,8 +79,6 @@ class ClientController extends BaseController
         curl_setopt($curl, CURLOPT_POSTFIELDS, "$cost");
         curl_exec($curl);
         curl_close($curl);
-
-        return true;
 
         } else {
 
