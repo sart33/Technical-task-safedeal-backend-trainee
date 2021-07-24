@@ -86,7 +86,7 @@ abstract class BaseModel
         $db = DB_NAME;
 
         DatabaseConnection::query("CREATE TABLE $db.order (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(255) NOT NULL,
   `product_weight` int(11) NOT NULL,
   `count` int(11) NOT NULL,
@@ -96,7 +96,9 @@ abstract class BaseModel
   `additional_info` text NOT NULL DEFAULT '',
   `order_date_time` datetime NOT NULL DEFAULT current_timestamp(),
   `delivery_date_time` varchar(255) NOT NULL,
-  `status` tinyint(3) NOT NULL DEFAULT 1
+  `status` tinyint(3) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`)
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
 
         DatabaseConnection::query("CREATE TABLE $db.user (

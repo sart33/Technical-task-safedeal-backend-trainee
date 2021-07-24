@@ -170,7 +170,7 @@ class BaseController
         }
     }
 
-    protected function validate($param) {
+    protected function validate($param, $tel = false) {
 
 
 
@@ -224,17 +224,18 @@ class BaseController
             return false;
         }
 
-        if(!empty($param->tel)) {
-            $tel = trim($param->tel);
-            if(preg_match('/[+]38\D[0][0-9]{2}\D[0-9]{3}\D[0-9]{2}\D[0-9]{2}/', $tel, $matches) === 1) {
-                $param->tel = preg_replace('/([+]38)\D([0][0-9]{2})\D([0-9]{3})\D([0-9]{2})\D([0-9]{2})/', '$1$2$3$4$5', $tel);
+        if($tel === true) {
+            if (!empty($param->tel)) {
+                $tel = trim($param->tel);
+                if (preg_match('/[+]38\D[0][0-9]{2}\D[0-9]{3}\D[0-9]{2}\D[0-9]{2}/', $tel, $matches) === 1) {
+                    $param->tel = preg_replace('/([+]38)\D([0][0-9]{2})\D([0-9]{3})\D([0-9]{2})\D([0-9]{2})/', '$1$2$3$4$5', $tel);
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }
-        } else {
-            return false;
         }
-
         $param->product_name = $productName;
         $param->product_weight = $productWeight;
         $param->count = $count;
